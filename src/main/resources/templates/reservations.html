@@ -8,19 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/reservations.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
     <form class="form-inline">
         <button class="btn btn-outline-success" type="button">Home</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">Transaction</button>
+        <button class="btn btn-sm btn-outline-secondary" type="button">Reservation</button>
         <button class="btn btn-sm btn-outline-secondary" type="button">Contact</button>
     </form>
 
 </nav>
 <br>
 <br>
-
 <div class="container">
     <input class="form-control" id="myInput" type="text" placeholder="Search..">
     <br>
@@ -37,31 +37,79 @@
         </thead>
         <tbody id="myTable">
         <tr data-th-each="reservation:${reservations}">
-            <td data-th-id="${reservation.getId}"></td>
+            <td data-th-text="${reservation.id}"></td>
             <td data-th-text="${reservation.person.getFullName}"></td>
             <td data-th-text="${reservation.city.getName}"></td>
             <td data-th-text="${reservation.institution.getName}"></td>
             <td data-th-text="${reservation.institution.getType}"></td>
-            <td>
-                <i class="fa fa-trash"></i>
+            <td data-th-id="${reservation.id}">
+                <i class="fa fa-trash delete-icon"></i>
                 <i class="fa fa-pencil-alt"></i>
-                <i class="fa fa-arrow-alt-circle-up"></i>
+                <a data-th-href="'/reservations?showReservation='+${reservation.id}">
+                    <i class="fa fa-arrow-alt-circle-down"></i>
+                </a>
             </td>
         </tr>
         </tbody>
     </table>
+    <button class="btn btn-primary" data-bs-target="#add-edit-reservation" data-bs-toggle="modal" type="button">Add
+    </button>
 </div>
+<div class="container" data-th-if="${reservationDetails != null}" style="margin-top: 20px">
+    <div class="card">
+        <div class="card-header fs-5 fw-bolder">Reservation details</div>
+        <div class="card-body" data-th-text="${reservationDetails.person.getFullName}"></div>
+        <div class="card-footer" data-th-text="${reservationDetails.person.getPhoneNumber}"></div>
+        <div class="card-footer" data-th-text="${reservationDetails.getDate}"></div>
+    </div>
+</div>
+<div class="modal" id="add-edit-reservation">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-<script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Reservation</h4>
+                <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
 
+            <!-- Modal body -->
+            <div class="modal-body">
+                <input class="form-control m-2" id="modal-firstName" placeholder="First name"
+                       type="text"/>
+                <input class="form-control m-2" id="modal-lastName" placeholder="Last name"
+                       type="text"/>
+                <input class="form-control m-2" id="modal-phoneNumber" placeholder="Phone Number"
+                       type="text"/>
+                <div class="input-group m-2">
+                    <select class="form-control" id="modal-city">
+                        <option selected>Select city</option>
+                        <option value="Cluj">Cluj</option>
+                        <option value="Oradea">Oradea</option>
+                    </select>
+                </div>
+                <div class="input-group m-2">
+                    <select class="form-control" id="modal-institution">
+                        <option selected>Select institution</option>
+                        <option value="Carol">Carol</option>
+                        <option value="Traian">Traian</option>
+                        <option value="Cinema City">Cinema City</option>
+                    </select>
+                </div>
+                <input class="form-control m-2" id="modal-date"
+                       placeholder="Date of reservation"
+                       data-toggle="tooltip" title="dd/MM/yyyy HH:mm:ss"
+                       type="text"/>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-dismiss="modal" id="add-button-modal" type="button">Add</button>
+                <button class="btn btn-danger" data-bs-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

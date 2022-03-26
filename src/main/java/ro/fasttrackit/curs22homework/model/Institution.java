@@ -15,6 +15,11 @@ public class Institution {
     public Institution() {
     }
 
+    public Institution(String name) {
+        this.name = name;
+        this.type = InstitutionType.DEFAULT;
+    }
+
     public Institution(String name, InstitutionType type) {
         this.name = name;
         this.type = type;
