@@ -9,16 +9,14 @@ public class Person {
     @Id
     @GeneratedValue
     private int id;
-    private String firstName;
-    private String lastName;
+    private String fullName;
     private String phoneNumber;
 
     public Person() {
     }
 
-    public Person(String firstName, String lastName, String phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Person(String fullName, String phoneNumber) {
+        this.fullName= fullName;
         this.phoneNumber = phoneNumber;
     }
 
@@ -26,16 +24,8 @@ public class Person {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
     public String getFullName() {
-        return firstName + " " + lastName;
+        return fullName;
     }
 
     public String getPhoneNumber() {

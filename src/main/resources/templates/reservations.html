@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/reservations.js"></script>
+    <script src="reservations.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
@@ -44,7 +44,7 @@
             <td data-th-text="${reservation.institution.getType}"></td>
             <td data-th-id="${reservation.id}">
                 <i class="fa fa-trash delete-icon"></i>
-                <i class="fa fa-pencil-alt"></i>
+                <i class="fa fa-pencil-alt edit-icon" data-bs-target="#add-edit-reservation" data-bs-toggle="modal"></i>
                 <a data-th-href="'/reservations?showReservation='+${reservation.id}">
                     <i class="fa fa-arrow-alt-circle-down"></i>
                 </a>
@@ -52,15 +52,16 @@
         </tr>
         </tbody>
     </table>
-    <button class="btn btn-primary" data-bs-target="#add-edit-reservation" data-bs-toggle="modal" type="button">Add
+    <button class="btn btn-primary" data-bs-target="#add-edit-reservation" data-bs-toggle="modal"
+            id="add-reservation-button" type="button">Add
     </button>
 </div>
 <div class="container" data-th-if="${reservationDetails != null}" style="margin-top: 20px">
     <div class="card">
         <div class="card-header fs-5 fw-bolder">Reservation details</div>
-        <div class="card-body" data-th-text="${reservationDetails.person.getFullName}"></div>
-        <div class="card-footer" data-th-text="${reservationDetails.person.getPhoneNumber}"></div>
-        <div class="card-footer" data-th-text="${reservationDetails.getDate}"></div>
+        <div class="card-body" data-th-text="${reservationDetails.person.getFullName}" id="card-person-name"></div>
+        <div class="card-footer card-person-phoneNumber" data-th-text="${reservationDetails.person.getPhoneNumber}"></div>
+        <div class="card-footer" data-th-text="${reservationDetails.getDate}" id="card-reservation-date"></div>
     </div>
 </div>
 <div class="modal" id="add-edit-reservation">
@@ -75,22 +76,20 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <input class="form-control m-2" id="modal-firstName" placeholder="First name"
-                       type="text"/>
-                <input class="form-control m-2" id="modal-lastName" placeholder="Last name"
+                <input class="form-control m-2" id="modal-fullName" placeholder="First name Last name"
                        type="text"/>
                 <input class="form-control m-2" id="modal-phoneNumber" placeholder="Phone Number"
                        type="text"/>
                 <div class="input-group m-2">
-                    <select class="form-control" id="modal-city">
-                        <option selected>Select city</option>
+                    <select class="form-control" >
+                        <option selected id="modal-city">Select city</option>
                         <option value="Cluj">Cluj</option>
                         <option value="Oradea">Oradea</option>
                     </select>
                 </div>
                 <div class="input-group m-2">
-                    <select class="form-control" id="modal-institution">
-                        <option selected>Select institution</option>
+                    <select class="form-control">
+                        <option selected id="modal-institution">Select institution</option>
                         <option value="Carol">Carol</option>
                         <option value="Traian">Traian</option>
                         <option value="Cinema City">Cinema City</option>

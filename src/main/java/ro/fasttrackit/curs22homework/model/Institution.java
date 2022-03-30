@@ -33,7 +33,7 @@ public class Institution {
         return name;
     }
 
-    public String getType() {
-        return type.name;
+    public InstitutionType getType() {
+        return type;
     }
 }

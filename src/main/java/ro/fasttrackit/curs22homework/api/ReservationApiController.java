@@ -1,11 +1,12 @@
 package ro.fasttrackit.curs22homework.api;
 
+import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ro.fasttrackit.curs22homework.model.Reservation;
 import ro.fasttrackit.curs22homework.service.ReservationService;
 
-@Controller
+@RestController
 @RequestMapping("api/reservations")
 public class ReservationApiController {
     private final ReservationService service;
@@ -17,6 +18,11 @@ public class ReservationApiController {
     @PostMapping
     Reservation addReservation(@RequestBody Reservation reservation){
         return service.add(reservation);
+    }
+
+    @PutMapping("{id}")
+    Reservation replaceReservation(@PathVariable int id, @RequestBody Reservation reservation){
+        return service.replace(id, reservation);
     }
 
     @DeleteMapping("{id}")
