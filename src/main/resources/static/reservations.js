@@ -68,18 +68,18 @@ $(document).ready(() => {
         });
     }
 
-    $('.edit-icon').click(function (){
+    $('#edit-icon').click(function (){
+
         reservationToEdit=this.parentElement.id;
 
-        const row = this.parentElement.parentElement;
-
-        const fullName = row.children[1].innerText;
-        const phoneNumber = $('.card-person-phoneNumber').val();
-        const city = row.children[3].innerText;
-        const institution = row.children[4].innerText;
+        const fullName = $('#card-person-name')[0].innerText;
+        const phoneNumber = $('#card-person-phoneNumber')[0].innerText;
+        const city = $('#card-city-name').val();
+        const institution = $('#card-institution-name').val();
         const dateTime = $('#card-reservation-date').val();
 
-        alert(phoneNumber);
+        alert('Puting' +fullName + phoneNumber+ city + institution + dateTime);
+
         // $('#modal-fullName').val(fullName);
         // $('#modal-phoneNumber').val(phoneNumber);
         // $('#modal-city').val(city);

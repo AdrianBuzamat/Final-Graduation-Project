@@ -57,6 +57,16 @@ public class Reservation {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", person=" + person +
+                ", city=" + city +
+                ", institution=" + institution +
+                '}';
+    }
     //    public LocalDateTime getDate() {
 //        return date;
 //    }

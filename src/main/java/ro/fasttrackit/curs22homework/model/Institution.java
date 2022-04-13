@@ -36,4 +36,13 @@ public class Institution {
     public InstitutionType getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return "Institution{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                '}';
+    }
 }

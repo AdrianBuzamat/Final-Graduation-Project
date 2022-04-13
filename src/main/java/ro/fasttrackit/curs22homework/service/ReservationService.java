@@ -27,6 +27,7 @@ public class ReservationService {
     }
 
     public Reservation add(Reservation reservation) {
+        log.info("Saving reservation {}", reservation);
         return repository.save(reservation);
     }
 

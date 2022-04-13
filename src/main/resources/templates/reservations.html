@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="reservations.js"></script>
+    <script src="/reservations.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
@@ -29,9 +29,9 @@
         <tr>
             <th>Crt.</th>
             <th>Person</th>
-            <th>City</th>
             <th>Institution</th>
-            <th>Domain</th>
+            <th>City</th>
+            <th>Reservation date</th>
             <th></th>
         </tr>
         </thead>
@@ -39,14 +39,13 @@
         <tr data-th-each="reservation:${reservations}">
             <td data-th-text="${reservation.id}"></td>
             <td data-th-text="${reservation.person.getFullName}"></td>
-            <td data-th-text="${reservation.city.getName}"></td>
             <td data-th-text="${reservation.institution.getName}"></td>
-            <td data-th-text="${reservation.institution.getType}"></td>
+            <td data-th-text="${reservation.city.getName}"></td>
+            <td data-th-text="${reservation.getDate}"></td>
             <td data-th-id="${reservation.id}">
-                <i class="fa fa-trash delete-icon"></i>
-                <i class="fa fa-pencil-alt edit-icon" data-bs-target="#add-edit-reservation" data-bs-toggle="modal"></i>
+                <i class=" btn fa fa-trash delete-icon"></i>
                 <a data-th-href="'/reservations?showReservation='+${reservation.id}">
-                    <i class="fa fa-arrow-alt-circle-down"></i>
+                    <i class=" btn fa fa-arrow-alt-circle-down"></i>
                 </a>
             </td>
         </tr>
@@ -59,9 +58,46 @@
 <div class="container" data-th-if="${reservationDetails != null}" style="margin-top: 20px">
     <div class="card">
         <div class="card-header fs-5 fw-bolder">Reservation details</div>
-        <div class="card-body" data-th-text="${reservationDetails.person.getFullName}" id="card-person-name"></div>
-        <div class="card-footer card-person-phoneNumber" data-th-text="${reservationDetails.person.getPhoneNumber}"></div>
-        <div class="card-footer" data-th-text="${reservationDetails.getDate}" id="card-reservation-date"></div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <th>Person name</th>
+                    <td data-th-text="${reservationDetails.person.getFullName}" id="card-person-name"></td>
+                </tr>
+                <tr>
+                    <th>Phone number</th>
+                    <td data-th-text="${reservationDetails.person.getPhoneNumber}" id="card-person-phoneNumber"></td>
+                </tr>
+                <tr>
+                    <th>Reservation date</th>
+                    <td data-th-text="${reservationDetails.getDate}" id="card-reservation-date"></td>
+                </tr>
+                <tr>
+                    <th>Institution</th>
+                    <td data-th-text="${reservationDetails.institution.getName}" id="card-institution-name"></td>
+                </tr>
+                <tr>
+                    <th>Domain</th>
+                    <td data-th-text="${reservationDetails.institution.getType}" id="card-institution-type"></td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td data-th-text="${reservationDetails.city.getName}" id="card-city-name"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer" data-th-id="${reservationDetails.id}">
+            <div class="btn-group btn-group-justified">
+                <span class="hidden-xs hidden-sm fs-6 fw-bolder">Edit reservation</span>
+                <span class="btn">
+                   <i class="fa fa-pencil-alt" data-bs-target="#add-edit-reservation"
+                      data-bs-toggle="modal" id="edit-icon"></i>
+                </span>
+
+            </div>
+        </div>
     </div>
 </div>
 <div class="modal" id="add-edit-reservation">
@@ -81,15 +117,15 @@
                 <input class="form-control m-2" id="modal-phoneNumber" placeholder="Phone Number"
                        type="text"/>
                 <div class="input-group m-2">
-                    <select class="form-control" >
-                        <option selected id="modal-city">Select city</option>
+                    <select class="form-control" id="modal-city">
+                        <option selected>Select city</option>
                         <option value="Cluj">Cluj</option>
                         <option value="Oradea">Oradea</option>
                     </select>
                 </div>
                 <div class="input-group m-2">
-                    <select class="form-control">
-                        <option selected id="modal-institution">Select institution</option>
+                    <select class="form-control" id="modal-institution">
+                        <option selected>Select institution</option>
                         <option value="Carol">Carol</option>
                         <option value="Traian">Traian</option>
                         <option value="Cinema City">Cinema City</option>
