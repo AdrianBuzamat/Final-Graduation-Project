@@ -1,10 +1,8 @@
-package ro.fasttrackit.curs22homework.api;
+package ro.fasttrackit.finalGraduationProject.api;
 
-import org.slf4j.Logger;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import ro.fasttrackit.curs22homework.model.Reservation;
-import ro.fasttrackit.curs22homework.service.ReservationService;
+import ro.fasttrackit.finalGraduationProject.model.Reservation;
+import ro.fasttrackit.finalGraduationProject.service.ReservationService;
 
 @RestController
 @RequestMapping("api/reservations")

@@ -1,8 +1,6 @@
-package ro.fasttrackit.curs22homework.model;
+package ro.fasttrackit.finalGraduationProject.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Reservation {

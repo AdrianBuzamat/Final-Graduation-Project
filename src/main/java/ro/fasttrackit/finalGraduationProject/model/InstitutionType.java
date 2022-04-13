@@ -1,6 +1,4 @@
-package ro.fasttrackit.curs22homework.model;
-
-import javax.xml.bind.annotation.XmlType;
+package ro.fasttrackit.finalGraduationProject.model;
 
 public enum InstitutionType {
     CINEMA("Cinema"),

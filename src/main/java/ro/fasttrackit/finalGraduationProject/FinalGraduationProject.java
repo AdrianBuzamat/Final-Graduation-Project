@@ -1,21 +1,21 @@
-package ro.fasttrackit.curs22homework;
+package ro.fasttrackit.finalGraduationProject;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import ro.fasttrackit.curs22homework.model.*;
-import ro.fasttrackit.curs22homework.repository.ReservationRepository;
+import ro.fasttrackit.finalGraduationProject.model.*;
+import ro.fasttrackit.finalGraduationProject.repository.ReservationRepository;
 
 import java.util.List;
 
-import static ro.fasttrackit.curs22homework.model.InstitutionType.*;
+import static ro.fasttrackit.finalGraduationProject.model.InstitutionType.*;
 
 @SpringBootApplication
-public class Curs22HomeworkApplication {
+public class FinalGraduationProject {
 
     public static void main(String[] args) {
-        SpringApplication.run(Curs22HomeworkApplication.class, args);
+        SpringApplication.run(FinalGraduationProject.class, args);
     }
 
     @Bean

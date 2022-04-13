@@ -1,10 +1,10 @@
-package ro.fasttrackit.curs22homework;
+package ro.fasttrackit.finalGraduationProject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Curs22HomeworkApplicationTests {
+class FinalGraduationProjectTests {
 
 	@Test
 	void contextLoads() {

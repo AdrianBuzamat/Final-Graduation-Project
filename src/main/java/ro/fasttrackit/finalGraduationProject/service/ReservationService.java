@@ -1,10 +1,10 @@
-package ro.fasttrackit.curs22homework.service;
+package ro.fasttrackit.finalGraduationProject.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import ro.fasttrackit.curs22homework.model.Reservation;
-import ro.fasttrackit.curs22homework.repository.ReservationRepository;
+import ro.fasttrackit.finalGraduationProject.model.Reservation;
+import ro.fasttrackit.finalGraduationProject.repository.ReservationRepository;
 
 import java.util.List;
 import java.util.Optional;

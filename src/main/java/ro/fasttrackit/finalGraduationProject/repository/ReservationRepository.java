@@ -1,7 +1,7 @@
-package ro.fasttrackit.curs22homework.repository;
+package ro.fasttrackit.finalGraduationProject.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ro.fasttrackit.curs22homework.model.Reservation;
+import ro.fasttrackit.finalGraduationProject.model.Reservation;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 }

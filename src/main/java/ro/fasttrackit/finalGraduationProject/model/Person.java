@@ -1,4 +1,4 @@
-package ro.fasttrackit.curs22homework.model;
+package ro.fasttrackit.finalGraduationProject.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,28 +1,21 @@
-package ro.fasttrackit.curs22homework.model;
+package ro.fasttrackit.finalGraduationProject.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Institution {
+public class City {
     @Id
     @GeneratedValue
     private int id;
     private String name;
-    private InstitutionType type;
 
-    public Institution() {
+    public City() {
     }
 
-    public Institution(String name) {
+    public City(String name) {
         this.name = name;
-        this.type = InstitutionType.DEFAULT;
-    }
-
-    public Institution(String name, InstitutionType type) {
-        this.name = name;
-        this.type = type;
     }
 
     public int getId() {
@@ -33,16 +26,11 @@ public class Institution {
         return name;
     }
 
-    public InstitutionType getType() {
-        return type;
-    }
-
     @Override
     public String toString() {
-        return "Institution{" +
+        return "City{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", type=" + type +
                 '}';
     }
 }
