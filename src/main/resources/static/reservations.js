@@ -74,17 +74,17 @@ $(document).ready(() => {
 
         const fullName = $('#card-person-name')[0].innerText;
         const phoneNumber = $('#card-person-phoneNumber')[0].innerText;
-        const city = $('#card-city-name').val();
-        const institution = $('#card-institution-name').val();
-        const dateTime = $('#card-reservation-date').val();
+        const city = $('#card-city-name')[0].innerText;
+        const institution = $('#card-institution-name')[0].innerText;
+        const dateTime = $('#card-reservation-date')[0].innerText;
 
-        alert('Puting' +fullName + phoneNumber+ city + institution + dateTime);
+//        alert('Puting' +fullName + phoneNumber+ city + institution + dateTime);
 
-        // $('#modal-fullName').val(fullName);
-        // $('#modal-phoneNumber').val(phoneNumber);
-        // $('#modal-city').val(city);
-        // $('#modal-institution').val(institution);
-        // $('#modal-date').val(dateTime);
+         $('#modal-fullName').val(fullName);
+         $('#modal-phoneNumber').val(phoneNumber);
+         $('#modal-city').val(city);
+         $('#modal-institution').val(institution);
+         $('#modal-date').val(dateTime);
 
     })
 
