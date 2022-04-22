@@ -39,6 +39,7 @@ public class ReservationService {
     }
 
     public Reservation replace(int id, Reservation reservation) {
+        log.info("Updating reservation {}", reservation);
         reservation.setId(id);
         return repository.save(reservation);
     }

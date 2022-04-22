@@ -62,6 +62,10 @@
             <table class="table table-hover">
                 <tbody>
                 <tr>
+                    <th>ID</th>
+                    <td data-th-text="${reservationDetails.getId}" id="card-person-id"></td>
+                </tr>
+                <tr>
                     <th>Person name</th>
                     <td data-th-text="${reservationDetails.person.getFullName}" id="card-person-name"></td>
                 </tr>
@@ -78,10 +82,6 @@
                     <td data-th-text="${reservationDetails.institution.getName}" id="card-institution-name"></td>
                 </tr>
                 <tr>
-                    <th>Domain</th>
-                    <td data-th-text="${reservationDetails.institution.getType}" id="card-institution-type"></td>
-                </tr>
-                <tr>
                     <th>City</th>
                     <td data-th-text="${reservationDetails.city.getName}" id="card-city-name"></td>
                 </tr>
@@ -92,7 +92,7 @@
             <div class="btn-group btn-group-justified">
                 <span class="hidden-xs hidden-sm fs-6 fw-bolder">Edit reservation</span>
                 <span class="btn">
-                   <i class="fa fa-pencil-alt" data-bs-target="#add-edit-reservation"
+                   <i class="fa fa-pencil-alt" data-bs-target="#edit-reservation"
                       data-bs-toggle="modal" id="edit-icon"></i>
                 </span>
 
@@ -141,6 +141,52 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button class="btn btn-primary" data-bs-dismiss="modal" id="add-button-modal" type="button">Add</button>
+                <button class="btn btn-danger" data-bs-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="edit-reservation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Reservation</h4>
+                <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <input class="form-control m-2" id="updateModal-fullName" placeholder="First name Last name"
+                       type="text"/>
+                <input class="form-control m-2" id="updateModal-phoneNumber" placeholder="Phone Number"
+                       type="text"/>
+                <div class="input-group m-2">
+                    <select class="form-control" id="updateModal-city">
+                        <option selected>Select city</option>
+                        <option value="Cluj">Cluj</option>
+                        <option value="Oradea">Oradea</option>
+                    </select>
+                </div>
+                <div class="input-group m-2">
+                    <select class="form-control" id="updateModal-institution">
+                        <option selected>Select institution</option>
+                        <option value="Carol">Carol</option>
+                        <option value="Traian">Traian</option>
+                        <option value="Cinema City">Cinema City</option>
+                    </select>
+                </div>
+                <input class="form-control m-2" id="updateModal-date"
+                       placeholder="Date of reservation"
+                       data-toggle="tooltip" title="dd/MM/yyyy HH:mm:ss"
+                       type="text"/>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-dismiss="modal" id="update-button-UpdateModal" type="button">Update</button>
                 <button class="btn btn-danger" data-bs-dismiss="modal" type="button">Close</button>
             </div>
         </div>

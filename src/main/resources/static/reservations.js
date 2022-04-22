@@ -1,5 +1,4 @@
 $(document).ready(() => {
-    let reservationToEdit;
 
     $("#myInput").on("keyup", function () {
         var value = $(this).val().toLowerCase();
@@ -29,15 +28,39 @@ $(document).ready(() => {
             date: dateTime
         };
 
-        if (reservationToEdit == null){
-            addReservation(newReservation);
-        } else {
-            editReservation(reservationToEdit, newReservation)
-        }
+        addReservation(newReservation)
+
+
     });
+    $('#update-button-UpdateModal').click(() => {
+
+            let id = $('#card-person-id')[0].innerText;
+
+            const fullName = $('#updateModal-fullName').val();
+            const phoneNumber = $('#updateModal-phoneNumber').val();
+            const city = $('#updateModal-city').val();
+            const institution = $('#updateModal-institution').val();
+            const dateTime = $('#updateModal-date').val();
+
+            const newReservation = {
+                person: {
+                    fullName: fullName,
+                    phoneNumber: phoneNumber
+                },
+                city: {
+                    name: city
+                },
+                institution: {
+                    name: institution
+                },
+                date: dateTime
+            };
+
+            editReservation(id, newReservation)
+        });
 
     function editReservation(id, newReservation){
-        fetch('api/reservations' + id, {
+        fetch('api/reservations/' + id, {
             method: 'PUT',
             body: JSON.stringify(newReservation),
             headers: {
@@ -53,7 +76,7 @@ $(document).ready(() => {
     }
 
     function addReservation(newReservation){
-        fetch('api/reservations', {
+        fetch('api/reservations/', {
             method: 'POST',
             body: JSON.stringify(newReservation),
             headers: {
@@ -70,23 +93,20 @@ $(document).ready(() => {
 
     $('#edit-icon').click(function (){
 
-        reservationToEdit=this.parentElement.id;
-
         const fullName = $('#card-person-name')[0].innerText;
         const phoneNumber = $('#card-person-phoneNumber')[0].innerText;
         const city = $('#card-city-name')[0].innerText;
         const institution = $('#card-institution-name')[0].innerText;
         const dateTime = $('#card-reservation-date')[0].innerText;
 
-//        alert('Puting' +fullName + phoneNumber+ city + institution + dateTime);
 
-         $('#modal-fullName').val(fullName);
-         $('#modal-phoneNumber').val(phoneNumber);
-         $('#modal-city').val(city);
-         $('#modal-institution').val(institution);
-         $('#modal-date').val(dateTime);
+         $('#updateModal-fullName').val(fullName);
+         $('#updateModal-phoneNumber').val(phoneNumber);
+         $('#updateModal-city').val(city);
+         $('#updateModal-institution').val(institution);
+         $('#updateModal-date').val(dateTime);
 
-    })
+    });
 
     $('.delete-icon').click(function () {
         const reservationId = this.parentElement.id;
