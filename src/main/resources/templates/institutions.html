@@ -13,9 +13,15 @@
 <body>
 <nav class="navbar navbar-light bg-light">
     <form class="form-inline">
-        <button class="btn btn-outline-success" type="button">Home</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">Institutions</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">Reservations</button>
+        <button class="btn btn-outline-success" type="button">
+            Home
+        </button>
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+            <a href="institutions" style="text-decoration:none;">Institutions</a>
+        </button>
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+            <a href="reservations" style="text-decoration:none;">Reservations</a>
+        </button>
     </form>
 </nav>
 <br>
@@ -28,18 +34,18 @@
         <tr>
             <th>Crt.</th>
             <th>Institution Name</th>
-            <th>Institution Type</th>
             <th>City</th>
+            <th>Institution Type</th>
             <th></th>
         </tr>
         </thead>
-        <tbody id="myTable">
+        <tbody id="institutions-table">
         <tr data-th-each="institution:${institutions}">
             <td data-th-text="${institution.id}"></td>
-            <td data-th-text="${reservation.institution.getName}"></td>
-            <td data-th-text="${reservation.institution.getType}"></td>
-            <td data-th-text="${reservation.city.getName}"></td>
-            <td data-th-id="${reservation.id}">
+            <td data-th-text="${institution.getName}"></td>
+            <td data-th-text="${institution.getCity}"></td>
+            <td data-th-text="${institution.getType}"></td>
+            <td data-th-id="${institution.id}">
                 <i class=" btn fa fa-trash delete-icon"></i>
                 <a data-th-href="'/institutions?showInstitution='+${institution.id}">
                     <i class=" btn fa fa-arrow-alt-circle-down"></i>

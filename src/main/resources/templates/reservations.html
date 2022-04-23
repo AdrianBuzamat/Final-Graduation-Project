@@ -13,9 +13,15 @@
 <body>
 <nav class="navbar navbar-light bg-light">
     <form class="form-inline">
-        <button class="btn btn-outline-success" type="button">Home</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">Institutions</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">Reservations</button>
+        <button class="btn btn-outline-success" type="button">
+            Home
+        </button>
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+            <a href="institutions" style="text-decoration:none;">Institutions</a>
+        </button>
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+            <a href="reservations" style="text-decoration:none;">Reservations</a>
+        </button>
     </form>
 
 </nav>
@@ -30,6 +36,7 @@
             <th>Crt.</th>
             <th>Person</th>
             <th>Institution</th>
+            <th>Institution type</th>
             <th>City</th>
             <th>Reservation date</th>
             <th></th>
@@ -40,7 +47,8 @@
             <td data-th-text="${reservation.id}"></td>
             <td data-th-text="${reservation.person.getFullName}"></td>
             <td data-th-text="${reservation.institution.getName}"></td>
-            <td data-th-text="${reservation.city.getName}"></td>
+            <td data-th-text="${reservation.institution.getType}"></td>
+            <td data-th-text="${reservation.institution.getCity}"></td>
             <td data-th-text="${reservation.getDate}"></td>
             <td data-th-id="${reservation.id}">
                 <i class=" btn fa fa-trash delete-icon"></i>
@@ -82,8 +90,12 @@
                     <td data-th-text="${reservationDetails.institution.getName}" id="card-institution-name"></td>
                 </tr>
                 <tr>
+                    <th>Institution type</th>
+                    <td data-th-text="${reservationDetails.institution.getType}" id="card-institution-type"></td>
+                </tr>
+                <tr>
                     <th>City</th>
-                    <td data-th-text="${reservationDetails.city.getName}" id="card-city-name"></td>
+                    <td data-th-text="${reservationDetails.institution.getCity}" id="card-city-name"></td>
                 </tr>
                 </tbody>
             </table>
@@ -131,6 +143,8 @@
                         <option value="Cinema City">Cinema City</option>
                     </select>
                 </div>
+                <input class="form-control m-2" id="modal-type" placeholder="Institution type"
+                       type="text"/>
                 <input class="form-control m-2" id="modal-date"
                        placeholder="Date of reservation"
                        data-toggle="tooltip" title="dd/MM/yyyy HH:mm:ss"
@@ -172,11 +186,14 @@
                 <div class="input-group m-2">
                     <select class="form-control" id="updateModal-institution">
                         <option selected>Select institution</option>
+                        <option value="Hiperdia">Hiperdia</option>
                         <option value="Carol">Carol</option>
                         <option value="Traian">Traian</option>
                         <option value="Cinema City">Cinema City</option>
                     </select>
                 </div>
+                <input class="form-control m-2" id="updateModal-type" placeholder="Institution type"
+                       type="text"/>
                 <input class="form-control m-2" id="updateModal-date"
                        placeholder="Date of reservation"
                        data-toggle="tooltip" title="dd/MM/yyyy HH:mm:ss"

@@ -13,17 +13,18 @@ $(document).ready(() => {
         const city = $('#modal-city').val();
         const institution = $('#modal-institution').val();
         const dateTime = $('#modal-date').val();
+        const type = $('#modal-type').val();
+
 
         const newReservation = {
             person: {
                 fullName: fullName,
                 phoneNumber: phoneNumber
             },
-            city: {
-                name: city
-            },
             institution: {
-                name: institution
+                name: institution,
+                city: city,
+                type: type
             },
             date: dateTime
         };
@@ -41,19 +42,19 @@ $(document).ready(() => {
             const city = $('#updateModal-city').val();
             const institution = $('#updateModal-institution').val();
             const dateTime = $('#updateModal-date').val();
+            const type = $('#updateModal-type').val();
 
             const newReservation = {
-                person: {
-                    fullName: fullName,
-                    phoneNumber: phoneNumber
-                },
-                city: {
-                    name: city
-                },
-                institution: {
-                    name: institution
-                },
-                date: dateTime
+                        person: {
+                            fullName: fullName,
+                            phoneNumber: phoneNumber
+                        },
+                        institution: {
+                            name: institution,
+                            city: city,
+                            type: type
+                        },
+                        date: dateTime
             };
 
             editReservation(id, newReservation)
@@ -97,6 +98,7 @@ $(document).ready(() => {
         const phoneNumber = $('#card-person-phoneNumber')[0].innerText;
         const city = $('#card-city-name')[0].innerText;
         const institution = $('#card-institution-name')[0].innerText;
+        const type = $('#card-institution-type')[0].innerText;
         const dateTime = $('#card-reservation-date')[0].innerText;
 
 
@@ -104,6 +106,7 @@ $(document).ready(() => {
          $('#updateModal-phoneNumber').val(phoneNumber);
          $('#updateModal-city').val(city);
          $('#updateModal-institution').val(institution);
+         $('#updateModal-type').val(type);
          $('#updateModal-date').val(dateTime);
 
     });

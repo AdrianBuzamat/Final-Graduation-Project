@@ -9,8 +9,6 @@ import ro.fasttrackit.finalGraduationProject.repository.ReservationRepository;
 
 import java.util.List;
 
-import static ro.fasttrackit.finalGraduationProject.model.InstitutionType.*;
-
 @SpringBootApplication
 public class FinalGraduationProject {
 
@@ -22,17 +20,17 @@ public class FinalGraduationProject {
     CommandLineRunner atStartup(ReservationRepository reservationRepository) {
         return args -> {
             reservationRepository.saveAll(List.of(
-                    new Reservation(new Person("Adrian Buzamat", "0723212212")
-                            , new City("Oradea")
-                            , new Institution("Hiperdia", MEDICAL_CLINIQUE)
+                    new Reservation(
+                              new Person("Adrian Buzamat", "0723212212")
+                            , new Institution("Hiperdia", "Oradea", "Medical Clinique")
                             , "03/12/2020 10:00:00")
-                    , new Reservation(new Person("Dragos Axinte", "0723232124")
-                            , new City("Cluj")
-                            , new Institution("Carol", RESTAURANT)
+                    , new Reservation(
+                              new Person("Dragos Axinte", "0723232124")
+                            , new Institution("Carol", "Cluj", "Restaurant")
                             , "03/12/2020 10:00:00")
-                    , new Reservation(new Person("Ciprian Baciu", "0723255524")
-                            , new City("Cluj")
-                            , new Institution("Unirea", HOTEL)
+                    , new Reservation(
+                              new Person("Ciprian Baciu", "0723255524")
+                            , new Institution("Unirea", "Cluj", "Hotel")
                             , "03/12/2020 10:00:00")
             ));
         };
