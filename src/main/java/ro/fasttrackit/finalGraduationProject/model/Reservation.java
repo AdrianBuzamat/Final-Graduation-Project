@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Reservation {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     private String date;
 //    private LocalDateTime date;
@@ -13,7 +13,6 @@ public class Reservation {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Person person;
-
 
     @OneToOne(cascade = CascadeType.ALL)
     private Institution institution;
@@ -46,6 +45,18 @@ public class Reservation {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setInstitution(Institution institution) {
+        this.institution = institution;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     @Override
