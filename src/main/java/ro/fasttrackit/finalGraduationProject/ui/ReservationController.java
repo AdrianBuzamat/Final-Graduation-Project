@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ro.fasttrackit.finalGraduationProject.service.ReservationService;
 
 @Controller
-@RequestMapping("reservations")
+//@RequestMapping()
 public class ReservationController {
     private final ReservationService service;
 
@@ -16,7 +16,7 @@ public class ReservationController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("reservations")
     String getReservationsPage(Model model, @RequestParam(required = false) Integer showReservation){
         model.addAttribute("reservations", service.getAll());
         if (showReservation!= null) {

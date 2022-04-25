@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Reservation {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     private String date;
 //    private LocalDateTime date;
@@ -15,17 +15,13 @@ public class Reservation {
     private Person person;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private City city;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private Institution institution;
 
     public Reservation() {
     }
 
-    public Reservation(Person person, City city, Institution institution, String date) {
+    public Reservation(Person person, Institution institution, String date) {
         this.person = person;
-        this.city = city;
         this.institution = institution;
         this.date = date;
 //        this.date = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
@@ -37,10 +33,6 @@ public class Reservation {
 
     public Person getPerson() {
         return person;
-    }
-
-    public City getCity() {
-        return city;
     }
 
     public Institution getInstitution() {
@@ -55,13 +47,24 @@ public class Reservation {
         this.id = id;
     }
 
+    public void setInstitution(Institution institution) {
+        this.institution = institution;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
                 ", date='" + date + '\'' +
                 ", person=" + person +
-                ", city=" + city +
                 ", institution=" + institution +
                 '}';
     }

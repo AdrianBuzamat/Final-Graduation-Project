@@ -1,27 +1,30 @@
 package ro.fasttrackit.finalGraduationProject.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Institution {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     private String name;
-    private InstitutionType type;
+    private String city;
+    private String type;
 
     public Institution() {
     }
 
-    public Institution(String name) {
-        this.name = name;
-        this.type = InstitutionType.DEFAULT;
+    public Institution(String name, String city){
+        this.name= name;
+        this.city = city;
+        this.type= null;
     }
 
-    public Institution(String name, InstitutionType type) {
+    public Institution(String name, String city, String type) {
         this.name = name;
+        this.city = city;
         this.type = type;
     }
 
@@ -33,8 +36,28 @@ public class Institution {
         return name;
     }
 
-    public InstitutionType getType() {
+    public String getType() {
         return type;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     @Override
@@ -42,7 +65,8 @@ public class Institution {
         return "Institution{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", type=" + type +
+                ", city='" + city + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }
