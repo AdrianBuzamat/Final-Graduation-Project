@@ -19,5 +19,5 @@ A reservation system where administrator can Add/Edit/Delete reservations for se
 ## Use Cases
 
 * Administrator should be able to view all reservations.
-* Administrator should be able to create new reservations by introducing data suc as Person (name, phone number) Institution (name, type, city) and date.
+* Administrator should be able to create new reservations by introducing data such as Person (name, phone number) Institution (name, type, city) and date.
 
